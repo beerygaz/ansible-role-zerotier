@@ -15,7 +15,7 @@ function file_content {
         while read -r; do
             network=($REPLY)
             echo "    \"${network[2]}\": {"
-            if [ ${network[4]} = "ACCESS_DENIED" ]; then
+            if [[ ${network[4]} = "ACCESS_DENIED" ]] || [[ ${network[4]} = "REQUESTING_CONFIGURATION" ]]; then
                 echo "        \"status\":\"${network[4]}\","
             echo "        \"device\":\"${network[6]}\""
         else
