@@ -20,3 +20,10 @@
 - import_tasks: join_network.yml
   when:
   - zerotier_network_id is defined
+
+- block:
+  - name: Update ansible_local facts
+    script: set_facts.sh
+
+  - name: Re-gather ansible_local facts
+    setup: filter=ansible_local
