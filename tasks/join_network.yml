@@ -5,3 +5,12 @@
     creates: /var/lib/zerotier-one/networks.d/{{ zerotier_network_id }}.conf
   tags:
   - configuration
+
+
+- name: Wait for ZeroTier to Join
+  ansible.builtin.command: zerotier-cli listnetworks
+  register: cmd_res
+  retries: 5
+  delay: 10
+  until: cmd_res.stdout_lines | select('search','OK') | list | count > 0
+  become: true
