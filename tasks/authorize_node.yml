@@ -17,7 +17,7 @@
     - ansible_local['zerotier']['networks'][zerotier_network_id] is not defined or
       ansible_local['zerotier']['networks'][zerotier_network_id]['status'] != 'OK'
 
-  - name: Configure members in network
+  - name: Configure members in network with inventory hostname
     uri:
       url: "{{ zerotier_api_url }}/api/network/{{ zerotier_network_id }}/member/{{ ansible_local['zerotier']['node_id'] }}"
       method: POST
@@ -57,7 +57,7 @@
     - ansible_local['zerotier']['networks'][zerotier_network_id] is not defined or
       ansible_local['zerotier']['networks'][zerotier_network_id]['status'] != 'OK'
 
-  - name: Configure members in network
+  - name: Configure members in network with custom name
     uri:
       url: "{{ zerotier_api_url }}/api/network/{{ zerotier_network_id }}/member/{{ ansible_local['zerotier']['node_id'] }}"
       method: POST
