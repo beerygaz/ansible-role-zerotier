@@ -51,6 +51,17 @@ Role Variables
 *Default value*: `localhost`  
 *Description*: Option to delegate tasks for Zerotier API calls. This is useful in a situation where API calls can only be made from a white-listed management server, for example.
 
+### zerotier_enable_custom_hostname
+*Type*: boolean
+*Default value*: `false`  
+*Description*: Option to allow the use of a custom name in Zero Tier. To be used in conjunction with zerotier_member_custom_hostname
+
+### zerotier_member_custom_hostname
+*Type*: string
+*Default value*:   
+*Description*: Sets the value of the variable as the name of the device in Zero Tier
+
+
 Example Playbook
 ----------------
 
@@ -87,6 +98,8 @@ Example Inventory
 
     [webservers:vars]
     zerotier_member_description='<AppName> webserver'
+    zerotier_enable_custom_hostname=true
+    zerotier_member_custom_hostname=custom_webserver_name
 
     [dbservers:vars]
     zerotier_member_description='<AppName> db cluster node'
